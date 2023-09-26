@@ -10,7 +10,6 @@ void insertion_sort_list(listint_t **list)
 
 	if (!(*list) || !(*list)->next)
 		return;
-
 	while (loop1->next)
 	{
 		if (loop1->n > loop1->next->n)
