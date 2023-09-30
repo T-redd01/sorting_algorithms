@@ -1,5 +1,12 @@
 #include "sort.h"
 
+/**
+ * rec_quick_sort - recursive quick sort
+ * @arr: array to sort
+ * @l: beginning index
+ * @h: end index
+ * @size: size of array
+ */
 void rec_quick_sort(int *arr, size_t l, size_t h, size_t size)
 {
 	int tmp;
@@ -35,7 +42,7 @@ void rec_quick_sort(int *arr, size_t l, size_t h, size_t size)
 	rec_quick_sort(arr, j + 1, h, size);
 }
 
-/*
+/**
  * quick_sort - implement quick sort algo lomuto part scheme (last el is pivot)
  * @array: array to sort
  * @size: size of array
