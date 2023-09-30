@@ -64,4 +64,5 @@ void counting_sort(int *array, size_t size)
 			tmp = j;
 		}
 	}
+	free(counter);
 }
