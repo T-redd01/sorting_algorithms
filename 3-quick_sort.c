@@ -3,29 +3,35 @@
 void rec_quick_sort(int *arr, size_t l, size_t h, size_t size)
 {
 	int tmp;
-	size_t i, j = l - 1;
+	size_t i, j;
 
-	printf("l: %lu, h: %lu\n\n", l, h);
-
-	if (l >= h)
+	if (!(l < h))
 		return;
 
-	for (i = l; i < h - 1; i++)
+	j = l - 1;
+	for (i = l; i < (h - 1); i++)
 	{
-		if (arr[i] <= arr[h - 1])
+		if (arr[i] < arr[h - 1])
 		{
 			j++;
-			tmp = arr[i];
-			arr[i] = arr[j];
-			arr[j] = tmp;
-			/*print_array(arr, size);*/
+			if (i != j)
+			{
+				tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+				print_array(arr, size);
+			}
 		}
 	}
-	i++;
-	tmp = arr[i];
-	arr[i] = arr[j];
-	arr[j] = tmp;
-	/*rec_quick_sort(arr, l, j - 1, size);*/
+	j++;
+	if (j != h - 1)
+	{
+		tmp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = tmp;
+		print_array(arr, size);
+	}
+	rec_quick_sort(arr, l, j, size);
 	rec_quick_sort(arr, j + 1, h, size);
 }
 
@@ -36,28 +42,7 @@ void rec_quick_sort(int *arr, size_t l, size_t h, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-	int tmp;
-	size_t i, j = 0 - 1;
-
 	if (size < 2)
 		return;
-
-	for (i = 0; i < size - 1; i++)
-	{
-		if (array[i] <= array[size - 1])
-		{
-			j++;
-			tmp = array[i];
-			array[i] = array[j];
-			array[j] = tmp;
-			/*print_array(array, size);*/
-		}
-	}
-	j++;
-	tmp = array[i];
-	array[i] = array[j];
-	array[j] = tmp;
-	/*print_array(array, size);*/
-	/*rec_quick_sort(array, 0, j - 1, size);*/
-	rec_quick_sort(array, j + 1, size, size);
+	rec_quick_sort(array, 0, size, size);
 }
